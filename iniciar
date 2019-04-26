@@ -364,7 +364,8 @@ else
     echo "Data is exist in ".$FILE." folder". " [ ".$_hoy." ]"
     echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
     echo 'Listo todo esta instalado y listo para desplegar'
-	echo 'Para desplegar ejecuta el comando iniciar'
+	echo 'Todo listo ahora desplegamos el server GO, GO, GO'
+	sh ./bin/servicio.sh
 fi
 }
 instalar
