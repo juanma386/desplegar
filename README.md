@@ -15,6 +15,10 @@ Para trabajar en entornos de producción eh fabricado una herramienta llamada "p
 
 $ sh production.sh
 
+Para instalar es simple de esta manera:
+
+$ sudo cp production.sh /usr/bin/prodok
+
 con esto ya podran realizar el despliegue desde **production**
 
 Y listo puedes realizar cualquier despliegue que quieras, disfrutenlo todo lo que puedan, disculpen el codigo desastroso, pero así como lo ven funciona, se que se puede mejorar pero bueno allí quedo a la espera de sus pull request, desde ya muchas gracias acepto donaciones a puedes contactarme por whatsapp al **+549-376-498-2265** saludos, o pueden buscarme en **hexomedesarrollos.com**
