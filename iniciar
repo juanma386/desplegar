@@ -191,6 +191,7 @@ else
     echo 'Listo todo esta instalado y listo para empezar'
 fi
 }
+route
 SEPARADOR
 
 
@@ -253,6 +254,36 @@ fi
 chmodbin(){
 chmod +x bin/servicio.sh
 }
+# Integramos datos en esta version 2.09 21042019 yuma2020 Juan Manuel Pedro Villalba
+crear_config(){ 
+$(echo ' 
+servidor=127.0.0.1
+puerto=8000
+usuario=NOCORRESPONDE
+password=NOCORRESPONDE
+' > ./config.ini)
+echo "nuevamente intentaremos ver si se ha creado el archivo"
+check_config
+}
+# Ahora con esto se crea un archivo para trabajar con los datos del servidor con un file llamado config.ini
+SEPARADOR
+check_config() {
+fileconfig=./config.ini
+if [ ! -e "$fileconfig" ];
+then
+    echo "File does not exist"
+	echo "Al parecer no existe este archivo"
+    echo "El archivo config.ini no existe se intentar crear".    " [ ".$_hoy." ]" >> testing.server.log
+		crear_config
+    echo "configdata deploy work created".             "[".$_hoy."]"
 
+else
+    echo "Data is exist in config_ini folder". " [ ".$_hoy." ]"
+    echo "Data config_ini deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
+    echo 'Listo todo esta instalado y listo para desplegar'
+fi
+}
+SEPARADOR
+check_config
 server
 sh bin/servicio.sh
