@@ -35,5 +35,7 @@ Y listo puedes realizar cualquier despliegue que quieras, disfrutenlo todo lo qu
 Si quieren cambiar el puerto simplemente borran el archivo **config.ini** así de simple o pueden cambiar parametros a su gusto en manual.
 IMPORTANTE!: ¡¡CUIDADO CON EJECUTAR ESTA OPCIÓN **PRODUCTION.SH** EN MODO LOCAL POR QUE HARA QUE NO TRABAJE Y TENGAN QUE EJECUTAR ESTOS COMANDOS!! Si por algun motivo estas trabajando en local y no quieres tener problemas con errores como los que por X motivo no quiera iniciarte el sistema, es simple: **SI USTED NO TIENEN PUERTO ABIERTO PARA TRABAJAR EN PRODUCCIÓN NO PODRA INICIAR EL SISTEMA**
 Para resolver este problema debes realizar esto:
+
 $ rm -v config.ini
+
 Y luego ejecutar iniciar dos veces una para instalar el arreglo y otra para ejecutarlo.
