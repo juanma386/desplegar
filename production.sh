@@ -64,7 +64,10 @@ knowserver(){
                 production_ok=$(curl ifconfig.me)
 		find ./* -name "config.ini" -print | xargs sed -i "s/127.0.0.1/$production_ok/g"
 		echo "Listo esta todo ok"
-		sh bin/servicio.sh
+		echo "Ahora puedes dar comando iniciar y te brindara todos los datos"
+		echo "Si algo sale mal, simplemente borra el archivo config.ini y listo"
+		echo "Cualquier consulta este es mi email hexomedesarrollos@gmail.com"
+		echo "Puedes seguirme en Facebook como Yuma2020"
         } 
  cambio_de_puertas=$(knowserver)
  cambiar_a_production(){
@@ -74,7 +77,10 @@ knowserver(){
  then
  echo "S1L('$S1L') no es igual a S2L('$S2L')"
  echo "Podemos continual con los trabajos de despliegues"
- sh bin/servicio.sh
+		echo "Ahora puedes dar comando iniciar y te brindara todos los datos"
+		echo "Si algo sale mal, simplemente borra el archivo config.ini y listo"
+		echo "Cualquier consulta este es mi email hexomedesarrollos@gmail.com"
+		echo "Puedes seguirme en Facebook como Yuma2020"
 fi
  if [ $S1L=$S2L ];
  then
