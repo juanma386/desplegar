@@ -62,7 +62,7 @@ server
 #
 knowserver(){
                 production_ok=$(curl ifconfig.me)
-		find ./* -name "config.ini" -print | xargs sed -i "s/$S1L/$production_ok/g"
+		find ./* -name "config.ini" -print | xargs sed -i "s/127.0.0.1/$production_ok/g"
 		echo "Listo esta todo ok"
 		sh bin/servicio.sh
         } 
