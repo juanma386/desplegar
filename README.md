@@ -5,7 +5,7 @@ Primero debes instalar debian en una un terminal VPS, PC casera con win10 o linu
 Luego debes escribir lo siguiente
 
 Desde la consola linux de Debian en tu **PC windows 10 en mi caso**
-$ sudo -v && git clone https://github.com/juanma386/desplegar.git . && sudo chmod +x iniciar && sudo cp iniciar /usr/bin/ && iniciar
+$ sudo -v && git clone https://github.com/juanma386/desplegar.git . && sudo chmod +x iniciar && sudo rm /usr/bin/iniciar && iniciar
 
 Con esto tienes solo tienes que realizar las siguientes llamadas desde la consola linux
 
