@@ -1,0 +1,34 @@
+#!/Bin/sh
+download-installer()
+{
+wget https://bitbucket.org/servitec2018/init_cloud/raw/d4359b26dcfaa0ceb45df2566db57be28d489e1a/install-update.php
+}
+
+bin(){
+        if [ -d bin ];
+        then
+        echo "S  , s   existe."
+        echo "Data is exist in bin folder".     " [ ".$_hoy." ]"
+    echo "Data deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
+    echo "Directorio de ./bin existe OK ".      " [ "$_pwd" ]" >> testing.server.log
+    echo "Directorio de ./bin OK ".     " [ "$_pwd" ]"
+        else
+        echo "No, no existe"
+        echo "File does not exist"
+        echo "Create Directory"
+        mkdir bin
+        echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> testing.server.log
+        fi
+}
+bin
+
+
+download-installer;
+mv install-update.php bin/install.php;
+php bin/install.php
+
+
+
+
+
+
