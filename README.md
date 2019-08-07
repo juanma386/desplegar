@@ -45,4 +45,5 @@ Modalidad de uso de instalar
 
 Instalar es una herramienta creada para realizar descargas de repositorios a rapida velocidad, donde se prioriza la productividad
 Modo de instalación en linux
-wget https://raw.githubusercontent.com/juanma386/desplegar/master/instalar && chmod +x instalar |xargs mv instalar /usr/bin/instalar
+
+$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/instalar && chmod +x instalar |xargs mv instalar /usr/bin/instalar
