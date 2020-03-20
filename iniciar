@@ -385,4 +385,4 @@ instalar
 
 dos2unix "$servidor"
 ejecutar
-$(sh "$servidor")
+$($servidor)
