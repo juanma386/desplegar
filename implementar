@@ -42,9 +42,12 @@ rm $descargado
 rm ./iniciar
 }
 
+preparar(){
+sudo apt-get update -y && sudo apt-get install php7.2 php5.6 curl dos2unix -y
+}
 instalar(){
 echo "¿Eres Administrador?"
-$(sudo -v && echo "OK" || echo "NOK" sudo apt-get update -y && sudo apt-get install php7.2 php5.6 curl dos2unix -y)
+sudo -v && preparar && echo "OK" || echo "NO Admin" 
 
 curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix $iniciar
