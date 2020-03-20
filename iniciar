@@ -18,6 +18,10 @@ echo '
 # @Licence:     GPLv2 Free Software Foundation <licensing@fsf.org>
 '
 
+dosInstaler(){
+sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servicio.sh;||echo "Aplicativos instalados ahora iniciar nuevamente" && exit;
+}
+
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
@@ -123,12 +127,12 @@ if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu
-    dos2unix $_pwd/./*/servicio.sh 
+    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu||echo "ERROR Download Not Download or conect Pastebin" && exit;
+   
     echo 'Downloading finish OK'
     echo 'Verificando Permisos'
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
-    dos2unix $_pwd/./*/servicio.sh
+    dos2unix $_pwd/./*/servicio.sh||dosInstalar
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
@@ -152,7 +156,7 @@ fi
 }
 SEPARADOR
 chmodbin(){
-chmod +x $_pwd/./*/servicio.sh 
+chmod +x $_pwd/./*/servicio.sh ||echo "ERROR chmod files is forbiden" && exit;
 }
 SEPARADOR
 server
@@ -187,7 +191,7 @@ then
 	mkdir bin
     echo "Route data deploy work download".		"[".$_hoy."]"
 	echo "Downloading data in progress"
-	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz
+	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz||echo "ERROR Download Not Download or conect Pastebin" && exit;
 	echo "preparing deployer to inicializated ".	" [ ".$_hoy." ]" >> testing.server.log
 	permisosverificarroute
 else
@@ -215,7 +219,7 @@ then
     echo 'Downloading finish OK'
     echo 'Verificando Permisos'
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
-    dos2unix $_pwd/./*/servicio.sh
+    dos2unix $_pwd/./*/servicio.sh||dosInstaler
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
@@ -298,7 +302,7 @@ server
 
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
-$(sudo -v && sudo apt -y update && sudo apt -y install dos2unix)
+$(sudo -v||echo "necesitas acceder")
 $(dos2unix iniciar)
 $(chmod +x iniciar)
 $(sudo cp iniciar /usr/bin/iniciar)
