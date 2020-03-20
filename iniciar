@@ -211,7 +211,6 @@ if [ ! -e "$fileroute" ];
 then
     echo "File does not exist"
 	echo "Create Directory"
-	mkdir bin
     echo "Route data deploy work download".		"[".$_hoy."]"
 	echo "Downloading data in progress"
 	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz
@@ -235,7 +234,7 @@ if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o "$servidor" https://raw.githubusercontent.com/juanma386/desplegar/master/bin/servicio.sh
+    curl -o $servidor https://raw.githubusercontent.com/juanma386/desplegar/master/bin/servicio.sh
 		server_shell
     echo "Downloading finish OK"
     echo "Verificando Permisos"
