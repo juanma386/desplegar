@@ -13,6 +13,14 @@ FILE="/usr/bin/iniciar"
 fileroute="$_pwd/./bin/route.php"
 startcheck=$iniciar
 
+
+
+SERVER=$(awk -F "=" '/servidor/ {print $2}' "$fileconfig")
+PORT=$(awk -F "=" '/puerto/ {print $2}' "$fileconfig")
+USER=$(awk -F "=" '/usuario/ {print $2}' "$fileconfig")
+PASS=$(awk -F "=" '/password/ {print $2}' "$fileconfig")
+
+
 errorEjecutando="Error iniciando servicio"
 errorDown(){
 echo "Error descargando"
@@ -32,7 +40,7 @@ servidor=127.0.0.1
 puerto=8000
 usuario=NOCORRESPONDE
 password=NOCORRESPONDE
-" > $_pwd/./config.ini
+" > $fileconfig
 }
 
 echo "
@@ -283,12 +291,11 @@ else
 fi
 }
 
-
-# Agregado en la version 2.10 24042019
 random(){
-                shuf -i 1-65555 -n 1
-        } 
- cambio_de_puertas=$(random)
+    shuf -i 9000-65555 -n 1;
+} 
+# Agregado en la version 2.10 24042019
+
  resolver_puerto_ochomil(){
  S1="8000"
  S2=$PORT
@@ -303,10 +310,12 @@ random(){
  echo "Se cambiara toda la configuración para que se brinde un medio donde trabajar comodamente durante el despliegue"
  echo "Se ha cambiado el puerto: S1("$S1") Pedido ".	" [ "$_hoy" ]" >> $logger
  echo "Se ha cambiado el puerto S1("$S1") por el puerto S2("$S2")".	" [ "$_pwd" ]" >> $logger
- find ./* -name "config.ini" -print | xargs sed -i "s/8000/$cambio_de_puertas/g"
- $(iniciar)
- fi
+ ls ./config.ini | xargs sed -i "s/8000/$(random)/g"|echo "Listo aplicamos la corrección"||echo "ya se cambio el valor"
+fi
+
 }
+
+# Layer secure Port errors
 
 
 
@@ -361,6 +370,7 @@ fi
 }
 
 
+core(){
 
 server && echo "funcion server exec"
 
@@ -376,5 +386,10 @@ instalar && echo "funcion instalar exec"
 resolver_puerto_ochomil && echo "funcion puerto exec"
 
 dos2unix "$servidor" && echo "Dos to unix file $servidor exec"
-ejecutar && echo "funcion ejecutar try exec"
-$($servidor) && echo "funcion ejecutar other try exec"
+# ejecutar && echo "funcion ejecutar try exec"
+ejecutar
+}
+
+core
+rm ./config.ini
+core
