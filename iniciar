@@ -165,7 +165,7 @@ SEPARADOR
 
 server() {
 
-if [ ! -e ""$servidor"" ];
+if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
@@ -186,7 +186,7 @@ fi
 SEPARADOR
 # Permisos del servicio.sh
 permisosverificarserver(){
-if [ ! -x ""$servidor"" ];
+if [ ! -x "$servidor" ];
 then
 echo "Delegando permisos"
 echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> $logger 
