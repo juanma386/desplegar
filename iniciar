@@ -1,6 +1,8 @@
 #!/bin/sh
 # File: Iniciar
 
+logger="$_pwd/./testing.server.log"
+public_html="$_pwd/./public_html"
 servidor="$bin/servicio.sh"
 bin="$_pwd/./bin/"
 _hoy=$(date +"%m_%d_%Y_%r_%S")
@@ -64,10 +66,10 @@ sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servici
 
 
 createpublic(){
-        if [ -d $_pwd/./public_html ];
+        if [ -d $public_html ];
 	then
-	mkdir $_pwd/./public_html
-        chmod 775 $_pwd/./public_html
+	mkdir $public_html
+        chmod 775 $public_html
 	else
 	echo "Hay un problema con los permisos, debes resolverlo"
 	fi
@@ -101,22 +103,22 @@ bin(){
 	then
 	echo "Sí, sí existe."
 	echo "Data is exist in bin folder".	" [ ".$_hoy." ]"
-    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> testing.server.log
-    echo "Directorio de ./bin existe OK ".	" [ "$_pwd" ]" >> testing.server.log
+    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> $logger
+    echo "Directorio de ./bin existe OK ".	" [ "$_pwd" ]" >> $logger
     echo "Directorio de ./bin OK ".	" [ "$_pwd" ]"
 	else
 	echo "No, no existe"
 	echo "File does not exist"
 	echo "Create Directory"
 	mkdir bin
-        echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> testing.server.log
+        echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> $logger
 	fi
 }
 bin
 
 # Registro del sistema
 registro() {
-logger=.$_pwd/./testing.server.log
+logger=.$_pwd/./$logger
 if [ ! -e "$logger" ];
 then
 echo "Log operative not found init process charging data"
@@ -132,14 +134,14 @@ echo "
 # @Advertencia  Usar con cautela y bajo propia responsabilidad
 # @Licence:     GPLv2 Free Software Foundation <licensing@fsf.org>
 # @Comment:	Un desastre, pero anda bien arreglados algunos errores.
-" > testing.server.log
+" > $logger
 
     echo "Finish file logger is created and continue process"
 else
     echo "Data file log is existed".	" [ ".$_hoy." ]"
     # echo "Los permisos del archivo" $_permisos
-    echo "Data file log is existed".    " [ ".$_hoy." ]" >> testing.server.log
-    echo "Los permisos del archivo" $_permisos >> testing.server.log
+    echo "Data file log is existed".    " [ ".$_hoy." ]" >> $logger
+    echo "Los permisos del archivo" $_permisos >> $logger
     PrintLogData
 fi
 }
@@ -168,13 +170,13 @@ then
    
     echo "Downloading finish OK"
     echo "Verificando Permisos"
-    echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
+    echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> $logger 
     dos2unix $_pwd/./*/servicio.sh
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
-    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> testing.server.log
-    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> testing.server.log
+    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> $logger
+    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> $logger
     echo "Directorio de ejecución OK ".	" [ "$_pwd" ]"
 fi
 }
@@ -184,11 +186,11 @@ permisosverificarserver(){
 if [ ! -x "$_pwd/./*/servicio.sh" ];
 then
 echo "Delegando permisos"
-echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> testing.server.log 
+echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> $logger 
 chmodbin
 else
 echo "Permisos de ejecución estan correctos"
-echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> testing.server.log 
+echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> $logger 
 fi
 }
 SEPARADOR
@@ -203,8 +205,8 @@ public(){
         then
         echo "Sí, sí existe."
         echo "Data is exist in bin folder".     " [ ".$_hoy." ]"
-	echo "Data deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
-	echo "Directorio de ./publi_html OK ".      " [ "$_pwd" ]" >> testing.server.log
+	echo "Data deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
+	echo "Directorio de ./publi_html OK ".      " [ "$_pwd" ]" >> $logger
     	echo "Directorio de ./publi_html OK ".     " [ "$_pwd" ]"
         else
         echo "No, no existe"
@@ -212,7 +214,7 @@ public(){
         echo "Create Directory"
 	mkdir public_html
 	chmod 755 public_html
-        echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> testing.server.log
+        echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> $logger
         exit
 	fi
 }
@@ -229,12 +231,12 @@ then
     echo "Route data deploy work download".		"[".$_hoy."]"
 	echo "Downloading data in progress"
 	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz
-	echo "preparing deployer to inicializated ".	" [ ".$_hoy." ]" >> testing.server.log
+	echo "preparing deployer to inicializated ".	" [ ".$_hoy." ]" >> $logger
 	permisosverificarroute
 else
     echo "Data is exist in bin folder".	" [ ".$_hoy." ]"
-    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> testing.server.log
-    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> testing.server.log
+    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> $logger
+    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> $logger
     echo "Directorio de ejecución OK ".	" [ "$_pwd" ]"
     echo "Listo todo esta instalado y listo para empezar"
 fi
@@ -255,13 +257,13 @@ then
 		server_shell
     echo "Downloading finish OK"
     echo "Verificando Permisos"
-    echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
+    echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> $logger 
     dos2unix $_pwd/./*/servicio.sh
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
-    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> testing.server.log
-    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> testing.server.log
+    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> $logger
+    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> $logger
     echo "Directorio de ejecución OK ".	" [ "$_pwd" ]"
 fi
 }
@@ -272,15 +274,15 @@ permisosverificarserver(){
 if [ ! -x "$_pwd/./*/servicio.sh" ];
 then
 echo "Delegando permisos"
-echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> testing.server.log 
+echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> $logger 
 chmodbin
 else
 echo "Permisos de ejecución estan correctos"
-echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> testing.server.log 
+echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> $logger 
 fi
 }
 chmodbin(){
-chmod +x $_pwd/./*/servicio.sh 
+chmod +x $servicio 
 }
 # Verificando estado de config.ini
 
@@ -291,13 +293,13 @@ if [ ! -e "$fileconfig" ];
 then
     echo "File does not exist"
 	echo "Al parecer no existe este archivo"
-    echo "El archivo config.ini no existe".    " [ ".$_hoy." ]" >> testing.server.log
+    echo "El archivo config.ini no existe".    " [ ".$_hoy." ]" >> $logger
 		crear_config
     echo "configdata deploy work created".             "[".$_hoy."]"
 
 else
     echo "Data is exist in config_ini folder". " [ ".$_hoy." ]"
-    echo "Data config_ini deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
+    echo "Data config_ini deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
     echo "Listo todo esta instalado y listo para desplegar"
 fi
 }
@@ -320,8 +322,8 @@ random(){
  then
  echo "S1("$S1") es igual a S1("$S1")"
  echo "Se cambiara toda la configuración para que se brinde un medio donde trabajar comodamente durante el despliegue"
- echo "Se ha cambiado el puerto: S1("$S1") Pedido ".	" [ "$_hoy" ]" >> testing.server.log
- echo "Se ha cambiado el puerto S1("$S1") por el puerto S2("$S2")".	" [ "$_pwd" ]" >> testing.server.log
+ echo "Se ha cambiado el puerto: S1("$S1") Pedido ".	" [ "$_hoy" ]" >> $logger
+ echo "Se ha cambiado el puerto S1("$S1") por el puerto S2("$S2")".	" [ "$_pwd" ]" >> $logger
  find ./* -name "config.ini" -print | xargs sed -i "s/8000/$cambio_de_puertas/g"
  fi
 }
@@ -343,14 +345,14 @@ if [ ! -e "$startcheck" ];
 then
     echo "File does not exist"
         echo "Al parecer no existe este archivo"
-    echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> testing.server.log
+    echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> $logger
         iniciar_carga
     echo "configdata deploy work created".             "[".$_hoy."]"
 	echo "Para desplegar ejecuta el comando iniciar"
 
 else
     echo "Data is exist in ".$startcheck." folder". " [ ".$_hoy." ]"
-    echo "Data ".$startcheck." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
+    echo "Data ".$startcheck." deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
     echo "Listo todo esta instalado y listo para desplegar"
 	echo "Para desplegar ejecuta el comando iniciar"
 fi
@@ -366,20 +368,21 @@ if [ ! -e "$FILE" ];
 then
     echo "File does not exist"
     echo "Al parecer no existe este archivo"
-    echo "El archivo " $FILE " no existe".    " [ ".$_hoy." ]" >> testing.server.log
+    echo "El archivo " $FILE " no existe".    " [ ".$_hoy." ]" >> $logger
         iniciar_carga
     echo "configdata deploy work created".             "[".$_hoy."]"
 	echo "Para desplegar ejecuta el comando iniciar"
 
 else
     echo "Data is exist in ".$FILE." folder". " [ ".$_hoy." ]"
-    echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
+    echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
     echo "Listo todo esta instalado y listo para desplegar"
     echo "Todo listo ahora desplegamos el server GO, GO, GO"
-    sh $_pwd/./*/servicio.sh 
+    sh $servicio
 fi
 }
 instalar
 
 dos2unix $servidor
 ejecutar
+
