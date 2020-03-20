@@ -43,12 +43,17 @@ rm ./iniciar
 }
 
 preparar(){
-sudo apt-get update -y && sudo apt-get install php7.2 php5.6 curl dos2unix -y
-}
-instalar(){
+
 echo "¿Eres Administrador?"
 sudo -v && preparar && echo "OK" || echo "NO Admin" 
+sudo apt-get update -y && sudo apt-get install php7.2 php5.6 curl dos2unix -y
+echo "Si todo el proceso esta correcto tienes posibilidad de dar uso a este sistema operativo si es deribado de Ubuntu/debian"
+php -v|echo "Php esta vivo"||echo "Php no funciona" && exit;
+curl http://google.com|echo "Puedes continuar||echo "al parecer no tienes internet o Curl no funciona en el sistema para descargas" && exit;
+dos2unix ./implementar|echo "Bueno podemos continuar"||echo "La aplicación **dos2unix** no funciona && exit;
+}
 
+instalar(){
 curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix $iniciar
 chmod +x $iniciar
