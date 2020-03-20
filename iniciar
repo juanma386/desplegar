@@ -1,8 +1,5 @@
 #!/bin/sh
 # File: Iniciar
-loader(){
-./bin/servicio.sh
-}
 
 echo '
 ## Sistema de carga para el servidor local
@@ -18,13 +15,28 @@ echo '
 # @Licence:     GPLv2 Free Software Foundation <licensing@fsf.org>
 '
 
+# Instalar programa
+# Verificando servicios de trabajo para el despliegue
+
+iniciar_carga() {
+
+curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar && mv iniciar $iniciar && chmod +x $iniciar;||$errorDown
+dos2unix iniciar
+chmod +x iniciar
+sudo cp iniciar /usr/bin/iniciar
+}
+
 dosInstaler(){
 sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servicio.sh;||echo "Aplicativos instalados ahora iniciar nuevamente" && exit;
 }
 
+errorEjecutando="Error iniciando servicio"
+errorDown="Error descargando";
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
+iniciar="/usr/bin/iniciar"
+
 
 createpublic(){
         if [ -d public_html ];
@@ -302,7 +314,7 @@ server
 
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
-$(sudo -v||echo "necesitas acceder")
+$(sudo -v||echo "necesitas acceder como administrador y ejecuta nuevamente" && exit;)
 $(dos2unix iniciar)
 $(chmod +x iniciar)
 $(sudo cp iniciar /usr/bin/iniciar)
@@ -315,7 +327,7 @@ then
     echo "File does not exist"
         echo "Al parecer no existe este archivo"
     echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> testing.server.log
-        iniciar_carga
+        iniciar_carga||
     echo "configdata deploy work created".             "[".$_hoy."]"
 	echo 'Para desplegar ejecuta el comando iniciar'
 
@@ -328,14 +340,7 @@ fi
 }
 check_step
 
-# Instalar programa
-# Verificando servicios de trabajo para el despliegue
 
-iniciar_carga() {
-dos2unix iniciar
-chmod +x iniciar
-sudo cp iniciar /usr/bin/iniciar
-}
 
 instalar(){
 
@@ -354,9 +359,8 @@ else
     echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
     echo 'Listo todo esta instalado y listo para desplegar'
     echo 'Todo listo ahora desplegamos el server GO, GO, GO'
-    sh $_pwd/./*/servicio.sh 
+    sh $_pwd/./*/servicio.sh ||$errorEjecutando
 fi
 }
 instalar
 
-loader
