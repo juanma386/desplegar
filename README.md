@@ -5,7 +5,7 @@ Primero debes instalar debian en una un terminal VPS, PC casera con win10 o linu
 Luego debes escribir lo siguiente
 
 Desde la consola linux de Debian en tu **PC windows 10 en mi caso**
-$ sudo -v && git clone https://github.com/juanma386/desplegar.git . && sudo chmod +x iniciar && sudo rm /usr/bin/iniciar && iniciar
+$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && sudo chmod +x implementar && sudo ./implementar preparalo && sudo ./implementar instalalo
 
 Con esto tienes solo tienes que realizar las siguientes llamadas desde la consola linux
 
@@ -44,4 +44,4 @@ Modalidad de uso de instalar
 Instalar es una herramienta creada para realizar descargas de repositorios a rapida velocidad, donde se prioriza la productividad
 Modo de instalación en linux
 
-$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && chmod +x implementar && sudo ./implementar preparalo && sudo ./implementar instalalo
+
