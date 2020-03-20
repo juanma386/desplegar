@@ -115,13 +115,12 @@ fi
 if [ "$1" = "help" ];
 then
      echo "Status help OK"
-else
+else 
     echo "Las opciones son las siguientes: 
     Ayuda : help
     Desinstalar : borralo
     Actualizar : actualizalo
     Instalar : ahora"
 fi
-
 
 
