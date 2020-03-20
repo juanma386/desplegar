@@ -2,13 +2,13 @@
 # File: Iniciar
 errorEjecutando="Error iniciando servicio"
 errorDown(){
-echo "Error descargando";
+echo "Error descargando"
 }
 aplicaTivo(){
-echo "Aplicativos instalados ahora iniciar nuevamente";
+echo "Aplicativos instalados ahora iniciar nuevamente"
 }
 forbiden(){
-echo "ERROR chmod files is forbiden";
+echo "ERROR chmod files is forbiden"
 }
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
@@ -238,7 +238,7 @@ SEPARADOR
 # Verificando la existencia del archivo bin/servicio.sh
 
 verificar_servicio(){			
-servidor=./bin/servicio.sh
+servidor=$_pwd/./bin/servicio.sh
 if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
@@ -373,3 +373,4 @@ fi
 }
 instalar
 
+$_pwd/./bin/servicio.sh
