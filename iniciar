@@ -222,7 +222,7 @@ else
 fi
 }
 verificar_servicio
-sh bin/servicio.sh
+#sh bin/servicio.sh
 
 server() {
 servidor=./bin/servicio.sh
@@ -315,7 +315,7 @@ server
 
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
-$(sudo -v)
+$(sudo -v && sudo apt -y update && sudo apt -y install dos2unix)
 $(curl -o iniciar https://pastebin.com/raw/8aLb2Ui6)
 $(dos2unix iniciar)
 $(chmod +x iniciar)
@@ -367,8 +367,8 @@ else
     echo "Data is exist in ".$FILE." folder". " [ ".$_hoy." ]"
     echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
     echo 'Listo todo esta instalado y listo para desplegar'
-	echo 'Todo listo ahora desplegamos el server GO, GO, GO'
-	
+    echo 'Todo listo ahora desplegamos el server GO, GO, GO'
+    sh $_pwd/./*/servicio.sh 
 fi
 }
 instalar
