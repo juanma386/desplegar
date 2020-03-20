@@ -103,7 +103,7 @@ EOF
 
 
 bin(){
-	if [ -d $bin ];
+	if [ -d "$bin" ];
 	then
 	echo "Sí, sí existe."
 	echo "Data is exist in bin folder".	" [ ".$_hoy." ]"
@@ -122,7 +122,7 @@ bin(){
 
 # Registro del sistema
 registro() {
-logger=.$_pwd/./$logger
+
 if [ ! -e "$logger" ];
 then
 echo "Log operative not found init process charging data"
