@@ -67,10 +67,8 @@ descargando(){
 
 instalar(){
 descargando
-dos2unix $descargado
-chmod +x $descargado
-mv $descargado $iniciar
-mv ./iniciar /usr/bin/
+dos2unix $iniciar
+chmod +x $iniciar
 check_step
 }
 
@@ -122,5 +120,8 @@ else
     Actualizar : actualizalo
     Instalar : ahora"
 fi
+
+
+
 
 
