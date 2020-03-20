@@ -1,14 +1,14 @@
 #!/bin/sh
 # File: Iniciar
 
-logger="$_pwd/./testing.server.log"
-public_html="$_pwd/./public_html"
 
-bin="$_pwd/./bin"
-servidor="$bin/servicio.sh"
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
+logger="$_pwd/./testing.server.log"
+public_html="$_pwd/./public_html"
+bin="$_pwd/./bin/"
+servidor="$bin./servicio.sh"
 iniciar="/usr/bin/iniciar"
 fileconfig="$_pwd/./config.ini"
 FILE="/usr/bin/iniciar"
