@@ -5,6 +5,7 @@ _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
 iniciar="/usr/bin/iniciar"
+descargado="$_pwd/iniciar"
 FILE="/usr/bin/iniciar"
 startcheck=$iniciar
 
@@ -35,11 +36,16 @@ else
 fi
 }
 
+remover(){
+rm $iniciar
+rm $descargado
+rm ./iniciar
+}
 
 instalar(){
 echo "¿Eres Administrador?"
 $(sudo -v && echo "OK" || echo "NOK" sudo apt update -y && sudo apt install php7.2 php5.6 curl dos2unix -y)
-rm $iniciar
+
 curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix $iniciar
 chmod +x $iniciar
@@ -47,10 +53,19 @@ bash $iniciar
 check_step
 }
 
-if [ $1 ="ahora" ]; then
+if [ $1 ="instalalo" ]; then
      echo 'ahora ejecuta la instalación con "./implementar ahora"';
 else
     instalar ;
+fi
+
+
+if [ $1 ="actualizalo" ]; then
+     echo 'ahora ejecuta la instalación con "./implementar ahora"';
+else
+    remover ;
+    instalar ;
+    echo "Listo ahora solo tienes que ejecutar el comando "iniciar" para operar normalmente"
 fi
 
 
