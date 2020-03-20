@@ -118,12 +118,13 @@ EOF
 SEPARADOR
 
 server() {
-servidor=./bin/servicio.sh
+servidor=$_pwd/./bin/servicio.sh
 if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
     curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu
+    dos2unix $_pwd/./*/servicio.sh 
     echo 'Downloading finish OK'
     echo 'Verificando Permisos'
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
@@ -151,7 +152,7 @@ fi
 }
 SEPARADOR
 chmodbin(){
-chmod +x bin/servicio.sh
+chmod +x $_pwd/./*/servicio.sh 
 }
 SEPARADOR
 server
@@ -225,26 +226,6 @@ fi
 }
 verificar_servicio
 #sh bin/servicio.sh
-
-server() {
-servidor=./bin/servicio.sh
-if [ ! -e "$servidor" ];
-then
-    echo "File does not exist sh"
-    echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu
-    echo 'Downloading finish OK'
-    echo 'Verificando Permisos'
-    echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
-    dos2unix $_pwd/./*/servicio.sh
-    permisosverificarserver
-else
-    echo "Data Deploy is existed".	" [ ".$_hoy." ]"
-    echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> testing.server.log
-    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> testing.server.log
-    echo "Directorio de ejecución OK ".	" [ "$_pwd" ]"
-fi
-}
 # Permisos del servicio.sh
 permisosverificarserver(){
 if [ ! -x "$_pwd/./*/servicio.sh" ];
@@ -258,7 +239,7 @@ echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> testing.ser
 fi
 }
 chmodbin(){
-chmod +x bin/servicio.sh
+chmod +x $_pwd/./*/servicio.sh 
 }
 # Verificando estado de config.ini
 
