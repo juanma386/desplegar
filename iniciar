@@ -117,7 +117,7 @@ bin(){
         echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> $logger
 	fi
 }
-bin
+
 
 # Registro del sistema
 registro() {
@@ -148,7 +148,6 @@ else
     PrintLogData
 fi
 }
-registro
 
 
 SEPARADOR(){
@@ -196,34 +195,15 @@ echo "Permisos de ejecución estan correctos"
 echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> $logger 
 fi
 }
-SEPARADOR
+
 chmodbin(){
 chmod +x "$servidor" 
 }
-SEPARADOR
-server
 
-public(){
-        if [ -d $public_html ];
-        then
-        echo "Sí, sí existe."
-        echo "Data is exist in bin folder".     " [ ".$_hoy." ]"
-	echo "Data deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
-	echo "Directorio de $publi_html OK ".      " [ "$_pwd" ]" >> $logger
-    	echo "Directorio de $publi_html OK ".     " [ "$_pwd" ]"
-        else
-        echo "No, no existe"
-        echo "File does not exist"
-        echo "Create Directory"
-	mkdir $public_html
-	chmod 755 $public_html
-        echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> $logger
-        exit
-	fi
-}
-#public
 
-SEPARADOR
+
+
+
 route() {
 
 if [ ! -e "$fileroute" ]; 
@@ -244,8 +224,7 @@ else
     echo "Listo todo esta instalado y listo para empezar"
 fi
 }
-route
-SEPARADOR
+
 
 
 # Verificando la existencia del archivo bin/servicio.sh
@@ -305,7 +284,7 @@ else
     echo "Listo todo esta instalado y listo para desplegar"
 fi
 }
-check_config
+
 
 # Agregado en la version 2.10 24042019
 random(){
@@ -329,9 +308,9 @@ random(){
  find ./* -name "config.ini" -print | xargs sed -i "s/8000/$cambio_de_puertas/g"
  fi
 }
-resolver_puerto_ochomil
 
-server
+
+
 
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
@@ -358,7 +337,7 @@ else
 	echo "Para desplegar ejecuta el comando iniciar"
 fi
 }
-check_step
+
 
 
 
@@ -381,8 +360,18 @@ else
     echo "Todo listo ahora desplegamos el server GO, GO, GO"
 fi
 }
-instalar
 
-dos2unix "$servidor"
-ejecutar
-$($servidor)
+
+
+route && echo "funcion route exec"
+registro && echo "funcion registro exec"
+bin && echo "funcion bin exec"
+server && echo "funcion server exec"
+resolver_puerto_ochomil && echo "funcion puerto exec"
+check_config && echo "funcion configuraciones exec"
+check_step && echo "funcion checkstep exec"
+server && echo "funcion server exec"
+instalar && echo "funcion instalar exec"
+dos2unix "$servidor" && echo "Dos to unix file $servidor exec"
+ejecutar && echo "funcion ejecutar try exec"
+$($servidor) && echo "funcion ejecutar other try exec"
