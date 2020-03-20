@@ -63,10 +63,11 @@ check_step
 
 if [ "$1" = "instalalo" ];
 then
-     echo 'ahora ejecuta la instalación con "./implementar ahora"';
+     
+     instalar ;
 else
-    # instalar ;
-    echo "ejecutado instalador"
+    # 
+    echo "Status Install OK"
 fi
 
 
@@ -77,7 +78,7 @@ else
     # remover ;
     #instalar ;
     # echo "Listo ahora solo tienes que ejecutar el comando "iniciar" para operar normalmente"
-    echo "ejecutado actualizalo"
+    echo "Status Update OK"
 fi
 
 if [ "$1" = "borralo" ];
@@ -86,12 +87,12 @@ then
 else
     # remover ;
     # echo "Listo y muchas gracias por usar este programa"
-    echo "ejecutado Borralo"
+    echo "Status UnInstall OK"
 fi
 
 if [ "$1" = "help" ];
 then
-     echo 'ahora ejecuta la instalación con "./implementar ahora"';
+     echo "Status help OK"
 else
     echo "Las opciones son las siguientes: 
     Ayuda : help
