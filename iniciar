@@ -1,5 +1,12 @@
 #!/bin/sh
 # File: Iniciar
+errorEjecutando="Error iniciando servicio"
+errorDown="Error descargando";
+_hoy=$(date +"%m_%d_%Y_%r_%S")
+_pwd=$(pwd)
+_permisos=$(ls -la *)
+iniciar="/usr/bin/iniciar"
+
 
 echo '
 ## Sistema de carga para el servidor local
@@ -30,12 +37,6 @@ dosInstaler(){
 sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servicio.sh;||echo "Aplicativos instalados ahora iniciar nuevamente" && exit;
 }
 
-errorEjecutando="Error iniciando servicio"
-errorDown="Error descargando";
-_hoy=$(date +"%m_%d_%Y_%r_%S")
-_pwd=$(pwd)
-_permisos=$(ls -la *)
-iniciar="/usr/bin/iniciar"
 
 
 createpublic(){
