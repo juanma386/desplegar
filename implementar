@@ -62,11 +62,11 @@ dos2unix ./implementar|echo "Bueno podemos continuar"||echo "La aplicación **do
 }
 
 descargando(){
-    curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
+    curl -o /usr/bin/iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 }
 
 instalar(){
-curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
+descargando
 dos2unix $descargado
 chmod +x $descargado
 mv $descargado $iniciar
@@ -84,6 +84,7 @@ fi
 
 if [ "$1" = "ahora" ];
 then 
+    descargando;
      instalar ;
 else
     # 
@@ -94,9 +95,10 @@ fi
 if [ "$1" = "actualizalo" ];
 then
      echo 'ahora ejecuta la instalación con "./implementar ahora"';
+    remover ;
+    instalar ;
 else
-    # remover ;
-    #instalar ;
+
     # echo "Listo ahora solo tienes que ejecutar el comando "iniciar" para operar normalmente"
     echo "Status Update OK"
 fi
@@ -120,5 +122,6 @@ else
     Actualizar : actualizalo
     Instalar : ahora"
 fi
+
 
 
