@@ -41,7 +41,7 @@ echo "
 
 # Instalar programa
 # Verificando servicios de trabajo para el despliegue
-
+ejecutar=$_pwd/./bin/servicio.sh
 iniciar_carga() {
 curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix iniciar
@@ -374,4 +374,4 @@ fi
 instalar
 
 dos2unix $_pwd/./bin/servicio.sh
-$_pwd/./bin/servicio.sh
+sh $ejecutar
