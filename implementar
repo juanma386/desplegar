@@ -61,7 +61,7 @@ bash $iniciar
 check_step
 }
 
-if [ "$1" = "instalalo" ]; then
+if [ "$1" = "instalalo" ];\n then
      echo 'ahora ejecuta la instalación con "./implementar ahora"';
 else
     # instalar ;
@@ -69,7 +69,7 @@ else
 fi
 
 
-if [ "$1" = "actualizalo" ]; then
+if [ "$1" = "actualizalo" ];\n then
      echo 'ahora ejecuta la instalación con "./implementar ahora"';
 else
     # remover ;
@@ -78,7 +78,7 @@ else
     echo "ejecutado actualizalo"
 fi
 
-if [ "$1" = "borralo" ]; then
+if [ "$1" = "borralo" ];\n then
      echo 'ahora ejecuta la instalación con "./implementar ahora"';
 else
     # remover ;
@@ -86,7 +86,7 @@ else
     echo "ejecutado Borralo"
 fi
 
-if [ "$1" = "help" ]; then
+if [ "$1" = "help" ];\n then
      echo 'ahora ejecuta la instalación con "./implementar ahora"';
 else
     echo "Las opciones son las siguientes:\n [ ./implementar ahora ] Esta diseñado para realizar la instalación\n\n[ ./implementar help ] es este mensaje de ayuda\n\n[ ./implementar borralo ] es para remover del sistema\n\n [ ./implementar actualizalo ] es para actualizar el programa a las versiones recientes"
