@@ -61,8 +61,19 @@ bash $iniciar
 check_step
 }
 
+preparar
+if [ "$1" = "preparar" ];
+then
+     
+     preparar ;
+else
+    # 
+    echo "Status Install OK"
+fi
+
 if [ "$1" = "instalalo" ];
 then
+     
      instalar ;
 else
     # 
@@ -72,11 +83,10 @@ fi
 
 if [ "$1" = "actualizalo" ];
 then
-     remover ;
-     instalar ;
+     echo 'ahora ejecuta la instalación con "./implementar ahora"';
 else
     # remover ;
-    # remover ;
+    #instalar ;
     # echo "Listo ahora solo tienes que ejecutar el comando "iniciar" para operar normalmente"
     echo "Status Update OK"
 fi
@@ -84,7 +94,6 @@ fi
 if [ "$1" = "borralo" ];
 then
      echo 'ahora ejecuta la instalación con "./implementar ahora"';
-     remover ;
 else
     # remover ;
     # echo "Listo y muchas gracias por usar este programa"
@@ -95,9 +104,10 @@ if [ "$1" = "help" ];
 then
      echo "Status help OK"
 else
-    echo "\n Las opciones son las siguientes: 
+    echo "Las opciones son las siguientes: 
     Ayuda : help
     Desinstalar : borralo
     Actualizar : actualizalo
     Instalar : ahora"
 fi
+
