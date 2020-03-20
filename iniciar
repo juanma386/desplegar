@@ -1,16 +1,25 @@
 #!/bin/sh
 # File: Iniciar
 errorEjecutando="Error iniciando servicio"
-errorDown(){
-echo "Error descargando" && exit;
-}
+errorDown(){echo "Error descargando" && exit;}
+aplicaTivo(){echo "Aplicativos instalados ahora iniciar nuevamente" && exit;}
+forbiden(){echo "ERROR chmod files is forbiden" && exit;}
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
 iniciar="/usr/bin/iniciar"
 
+# Integramos datos en esta version 2.09 21042019 yuma2020 Juan Manuel Pedro Villalba
+crear_config(){ 
+echo " 
+servidor=127.0.0.1
+puerto=8000
+usuario=NOCORRESPONDE
+password=NOCORRESPONDE
+" > config.ini
+}
 
-echo '
+echo "
 ## Sistema de carga para el servidor local
 ##
 ## @author      Villalba Juan Manuel Pedro <https://github.com/juanma386>
@@ -22,21 +31,20 @@ echo '
 # @Date:        05:41pm 14-09-2017
 # @Advertencia  Usar con cautela y bajo propia responsabilidad
 # @Licence:     GPLv2 Free Software Foundation <licensing@fsf.org>
-'
+"
 
 # Instalar programa
 # Verificando servicios de trabajo para el despliegue
 
 iniciar_carga() {
-
-curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar && mv iniciar $iniciar && chmod +x $iniciar;||errorDown
+curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar && mv iniciar $iniciar && chmod +x $iniciar;|| errorDown
 dos2unix iniciar
 chmod +x iniciar
 sudo cp iniciar /usr/bin/iniciar
 }
 
 dosInstaler(){
-sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servicio.sh;||echo "Aplicativos instalados ahora iniciar nuevamente" && exit;
+sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servicio.sh;|| aplicaTivo;
 }
 
 
@@ -98,7 +106,7 @@ logger=./testing.server.log
 if [ ! -e "$logger" ];
 then
 echo "Log operative not found init process charging data"
-echo '
+echo "
 ## Part Deploy working
 ##
 ## @author      Villalba Juan Manuel Pedro <https://github.com/juanma386>
@@ -110,7 +118,7 @@ echo '
 # @Advertencia  Usar con cautela y bajo propia responsabilidad
 # @Licence:     GPLv2 Free Software Foundation <licensing@fsf.org>
 # @Comment:	Un desastre, pero anda bien arreglados algunos errores.
-' > testing.server.log
+" > testing.server.log
 
     echo "Finish file logger is created and continue process"
 else
@@ -144,8 +152,8 @@ then
     echo "Download sh deployer to system_".		"[".$_hoy."]"
     curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu||echo "ERROR Download Not Download or conect Pastebin" && exit;
    
-    echo 'Downloading finish OK'
-    echo 'Verificando Permisos'
+    echo "Downloading finish OK"
+    echo "Verificando Permisos"
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
     dos2unix $_pwd/./*/servicio.sh||dosInstalar
     permisosverificarserver
@@ -161,17 +169,17 @@ SEPARADOR
 permisosverificarserver(){
 if [ ! -x "$_pwd/./*/servicio.sh" ];
 then
-echo 'Delegando permisos'
+echo "Delegando permisos"
 echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> testing.server.log 
 chmodbin
 else
-echo 'Permisos de ejecución estan correctos'
+echo "Permisos de ejecución estan correctos"
 echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> testing.server.log 
 fi
 }
 SEPARADOR
 chmodbin(){
-chmod +x $_pwd/./*/servicio.sh ||echo "ERROR chmod files is forbiden" && exit;
+chmod +x $_pwd/./*/servicio.sh || forbiden;
 }
 SEPARADOR
 server
@@ -206,7 +214,7 @@ then
 	mkdir bin
     echo "Route data deploy work download".		"[".$_hoy."]"
 	echo "Downloading data in progress"
-	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz||echo "ERROR Download Not Download or conect Pastebin" && exit;
+	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz|| ErrorDown;
 	echo "preparing deployer to inicializated ".	" [ ".$_hoy." ]" >> testing.server.log
 	permisosverificarroute
 else
@@ -214,7 +222,7 @@ else
     echo "Data deploy is existed  OK ".	" [ "$_hoy" ]" >> testing.server.log
     echo "Directorio de ejecución OK ".	" [ "$_pwd" ]" >> testing.server.log
     echo "Directorio de ejecución OK ".	" [ "$_pwd" ]"
-    echo 'Listo todo esta instalado y listo para empezar'
+    echo "Listo todo esta instalado y listo para empezar"
 fi
 }
 route
@@ -231,8 +239,8 @@ then
     echo "Download sh deployer to system_".		"[".$_hoy."]"
     
 		server_shell
-    echo 'Downloading finish OK'
-    echo 'Verificando Permisos'
+    echo "Downloading finish OK"
+    echo "Verificando Permisos"
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
     dos2unix $_pwd/./*/servicio.sh||dosInstaler
     permisosverificarserver
@@ -249,11 +257,11 @@ verificar_servicio
 permisosverificarserver(){
 if [ ! -x "$_pwd/./*/servicio.sh" ];
 then
-echo 'Delegando permisos'
+echo "Delegando permisos"
 echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> testing.server.log 
 chmodbin
 else
-echo 'Permisos de ejecución estan correctos'
+echo "Permisos de ejecución estan correctos"
 echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> testing.server.log 
 fi
 }
@@ -262,15 +270,7 @@ chmod +x $_pwd/./*/servicio.sh
 }
 # Verificando estado de config.ini
 
-# Integramos datos en esta version 2.09 21042019 yuma2020 Juan Manuel Pedro Villalba
-crear_config(){ 
-echo ' 
-servidor=127.0.0.1
-puerto=8000
-usuario=NOCORRESPONDE
-password=NOCORRESPONDE
-' > config.ini
-}
+
 check_config() {
 fileconfig=./config.ini
 if [ ! -e "$fileconfig" ];
@@ -284,7 +284,7 @@ then
 else
     echo "Data is exist in config_ini folder". " [ ".$_hoy." ]"
     echo "Data config_ini deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
-    echo 'Listo todo esta instalado y listo para desplegar'
+    echo "Listo todo esta instalado y listo para desplegar"
 fi
 }
 check_config
@@ -295,19 +295,19 @@ random(){
         } 
  cambio_de_puertas=$(random)
  resolver_puerto_ochomil(){
- S1='8000'
+ S1="8000"
  S2=$PORT
  if [ $S1!=$S2 ];
  then
- echo "S1('$S1') no es igual a S2('$S2')"
+ echo "S1("$S1") no es igual a S2("$S2")"
  echo "Podemos continual con los trabajos de despliegues"
  fi
  if [ $S1=$S1 ];
  then
- echo "S1('$S1') es igual a S1('$S1')"
+ echo "S1("$S1") es igual a S1("$S1")"
  echo "Se cambiara toda la configuración para que se brinde un medio donde trabajar comodamente durante el despliegue"
- echo "Se ha cambiado el puerto: S1('$S1') Pedido ".	" [ "$_hoy" ]" >> testing.server.log
- echo "Se ha cambiado el puerto S1('$S1') por el puerto S2('$S2')".	" [ "$_pwd" ]" >> testing.server.log
+ echo "Se ha cambiado el puerto: S1("$S1") Pedido ".	" [ "$_hoy" ]" >> testing.server.log
+ echo "Se ha cambiado el puerto S1("$S1") por el puerto S2("$S2")".	" [ "$_pwd" ]" >> testing.server.log
  find ./* -name "config.ini" -print | xargs sed -i "s/8000/$cambio_de_puertas/g"
  fi
 }
@@ -332,13 +332,13 @@ then
     echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> testing.server.log
         iniciar_carga||
     echo "configdata deploy work created".             "[".$_hoy."]"
-	echo 'Para desplegar ejecuta el comando iniciar'
+	echo "Para desplegar ejecuta el comando iniciar"
 
 else
     echo "Data is exist in ".$startcheck." folder". " [ ".$_hoy." ]"
     echo "Data ".$startcheck." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
-    echo 'Listo todo esta instalado y listo para desplegar'
-	echo 'Para desplegar ejecuta el comando iniciar'
+    echo "Listo todo esta instalado y listo para desplegar"
+	echo "Para desplegar ejecuta el comando iniciar"
 fi
 }
 check_step
@@ -355,13 +355,13 @@ then
     echo "El archivo " $FILE " no existe".    " [ ".$_hoy." ]" >> testing.server.log
         iniciar_carga
     echo "configdata deploy work created".             "[".$_hoy."]"
-	echo 'Para desplegar ejecuta el comando iniciar'
+	echo "Para desplegar ejecuta el comando iniciar"
 
 else
     echo "Data is exist in ".$FILE." folder". " [ ".$_hoy." ]"
     echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
-    echo 'Listo todo esta instalado y listo para desplegar'
-    echo 'Todo listo ahora desplegamos el server GO, GO, GO'
+    echo "Listo todo esta instalado y listo para desplegar"
+    echo "Todo listo ahora desplegamos el server GO, GO, GO"
     sh $_pwd/./*/servicio.sh ||$errorEjecutando
 fi
 }
