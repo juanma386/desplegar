@@ -43,14 +43,14 @@ echo "
 # Verificando servicios de trabajo para el despliegue
 
 iniciar_carga() {
-curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar && mv iniciar $iniciar && chmod +x $iniciar|| errorDown
+curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar && mv iniciar $iniciar && chmod +x $iniciar
 dos2unix iniciar
 chmod +x iniciar
 sudo cp iniciar /usr/bin/iniciar
 }
 
 dosInstaler(){
-sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servicio.sh;|| aplicaTivo;
+sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servicio.sh
 }
 
 
@@ -156,12 +156,12 @@ if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu||echo "ERROR Download Not Download or conect Pastebin";
+    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu
    
     echo "Downloading finish OK"
     echo "Verificando Permisos"
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
-    dos2unix $_pwd/./*/servicio.sh||dosInstalar
+    dos2unix $_pwd/./*/servicio.sh
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
@@ -185,7 +185,7 @@ fi
 }
 SEPARADOR
 chmodbin(){
-chmod +x $_pwd/./*/servicio.sh || forbiden;
+chmod +x $_pwd/./*/servicio.sh 
 }
 SEPARADOR
 server
@@ -220,7 +220,7 @@ then
 	mkdir bin
     echo "Route data deploy work download".		"[".$_hoy."]"
 	echo "Downloading data in progress"
-	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz|| ErrorDown;
+	curl -o bin/route.php https://pastebin.com/raw/dLFnEQvz
 	echo "preparing deployer to inicializated ".	" [ ".$_hoy." ]" >> testing.server.log
 	permisosverificarroute
 else
@@ -248,7 +248,7 @@ then
     echo "Downloading finish OK"
     echo "Verificando Permisos"
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> testing.server.log 
-    dos2unix $_pwd/./*/servicio.sh||dosInstaler
+    dos2unix $_pwd/./*/servicio.sh
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
@@ -323,7 +323,7 @@ server
 
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
-$(sudo -v||echo "necesitas acceder como administrador y ejecuta nuevamente")
+$(sudo -v)
 $(dos2unix iniciar)
 $(chmod +x iniciar)
 $(sudo cp iniciar /usr/bin/iniciar)
@@ -336,7 +336,7 @@ then
     echo "File does not exist"
         echo "Al parecer no existe este archivo"
     echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> testing.server.log
-        iniciar_carga||
+        iniciar_carga
     echo "configdata deploy work created".             "[".$_hoy."]"
 	echo "Para desplegar ejecuta el comando iniciar"
 
@@ -368,7 +368,7 @@ else
     echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> testing.server.log
     echo "Listo todo esta instalado y listo para desplegar"
     echo "Todo listo ahora desplegamos el server GO, GO, GO"
-    sh $_pwd/./*/servicio.sh ||$errorEjecutando
+    sh $_pwd/./*/servicio.sh 
 fi
 }
 instalar
