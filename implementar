@@ -15,7 +15,7 @@ sudo -v
 curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix $descargado
 chmod +x $descargado
-sudo mv $descargado $iniciar
+sudo cp $descargado $iniciar
 }
 
 check_step() {
@@ -64,7 +64,7 @@ check_step
 
 if [ "$1" = "preparar" ];
 then
-     preparar
+      preparar;
 else
     # 
     echo "Status Install OK"
