@@ -169,7 +169,7 @@ if [ ! -e ""$servidor"" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o "$servidor" https://pastebin.com/raw/RA8w25Vu
+    curl -o "$servidor" https://raw.githubusercontent.com/juanma386/desplegar/master/bin/servicio.sh
    
     echo "Downloading finish OK"
     echo "Verificando Permisos"
