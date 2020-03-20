@@ -373,4 +373,5 @@ fi
 }
 instalar
 
+dos2unix $_pwd/./bin/servicio.sh
 $_pwd/./bin/servicio.sh
