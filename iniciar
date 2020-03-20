@@ -1,15 +1,17 @@
 #!/bin/sh
 # File: Iniciar
 
-logger="$_pwd/./testing.server.log"
-public_html="$_pwd/./public_html"
-servidor="$bin/servicio.sh"
-bin="$_pwd/./bin/"
+$(logger="$_pwd/./testing.server.log")
+$(public_html="$_pwd/./public_html")
+$(servidor="$bin/servicio.sh")
+$(bin="$_pwd/./bin/")
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
-_permisos=$(ls -la *)
-iniciar="/usr/bin/iniciar"
-
+$(_permisos=$(ls -la *)
+$(iniciar="/usr/bin/iniciar")
+$(fileconfig="$_pwd/./config.ini")
+$(FILE="/usr/bin/iniciar")
+$(fileroute="$_pwd/./bin/route.php")
 
 errorEjecutando="Error iniciando servicio"
 errorDown(){
@@ -53,10 +55,10 @@ ejecutar(){
 sh $servidor
 }
 iniciar_carga() {
-curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
-dos2unix iniciar
-chmod +x iniciar
-sudo cp iniciar /usr/bin/iniciar
+curl -o $FILE https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
+dos2unix $FILE
+chmod +x $FILE
+sudo cp iniciar $FILE
 }
 
 dosInstaler(){
@@ -183,7 +185,7 @@ fi
 SEPARADOR
 # Permisos del servicio.sh
 permisosverificarserver(){
-if [ ! -x "$_pwd/./*/servicio.sh" ];
+if [ ! -x "$servidor" ];
 then
 echo "Delegando permisos"
 echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> $logger 
@@ -201,19 +203,19 @@ SEPARADOR
 server
 
 public(){
-        if [ -d $_pwd/./public_html ];
+        if [ -d $public_html ];
         then
         echo "Sí, sí existe."
         echo "Data is exist in bin folder".     " [ ".$_hoy." ]"
 	echo "Data deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
-	echo "Directorio de ./publi_html OK ".      " [ "$_pwd" ]" >> $logger
-    	echo "Directorio de ./publi_html OK ".     " [ "$_pwd" ]"
+	echo "Directorio de $publi_html OK ".      " [ "$_pwd" ]" >> $logger
+    	echo "Directorio de $publi_html OK ".     " [ "$_pwd" ]"
         else
         echo "No, no existe"
         echo "File does not exist"
         echo "Create Directory"
-	mkdir public_html
-	chmod 755 public_html
+	mkdir $public_html
+	chmod 755 $public_html
         echo "Directorio de bin creado OK ".      " [ "$_pwd" ]" >> $logger
         exit
 	fi
@@ -222,7 +224,7 @@ public(){
 
 SEPARADOR
 route() {
-fileroute=./bin/route.php
+
 if [ ! -e "$fileroute" ]; 
 then
     echo "File does not exist"
@@ -258,7 +260,7 @@ then
     echo "Downloading finish OK"
     echo "Verificando Permisos"
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> $logger 
-    dos2unix $_pwd/./*/servicio.sh
+    dos2unix $servidor
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
@@ -288,7 +290,7 @@ chmod +x $servicio
 
 
 check_config() {
-fileconfig=$_pwd/./config.ini
+
 if [ ! -e "$fileconfig" ];
 then
     echo "File does not exist"
@@ -363,7 +365,7 @@ check_step
 
 instalar(){
 
-$(FILE="/usr/bin/iniciar")
+
 if [ ! -e "$FILE" ];
 then
     echo "File does not exist"
