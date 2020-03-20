@@ -306,6 +306,7 @@ random(){
  echo "Se ha cambiado el puerto: S1("$S1") Pedido ".	" [ "$_hoy" ]" >> $logger
  echo "Se ha cambiado el puerto S1("$S1") por el puerto S2("$S2")".	" [ "$_pwd" ]" >> $logger
  find ./* -name "config.ini" -print | xargs sed -i "s/8000/$cambio_de_puertas/g"
+ $(iniciar)
  fi
 }
 
