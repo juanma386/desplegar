@@ -26,7 +26,7 @@ then
     echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> $logger
         iniciar carga
     echo "configdata deploy work created".             "[".$_hoy."]"
-	echo "Para desplegar ejecuta el comando iniciar"
+	echo "No se instalo correctamente"
 
 else
     echo "Data is exist in ".$startcheck." folder". " [ ".$_hoy." ]"
