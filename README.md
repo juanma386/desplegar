@@ -5,7 +5,7 @@ Primero debes instalar debian en una un terminal VPS, PC casera con win10 o linu
 Luego debes escribir lo siguiente
 
 Desde la consola linux de Debian en tu **PC windows 10 en mi caso**
-$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && sudo chmod +x implementar && sudo ./implementar preparar && sudo ./implementar ahora
+$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && sudo chmod +x implementar && sudo ./implementar preparar && sudo ./implementar ahora && iniciar
 
 Con esto tienes solo tienes que realizar las siguientes llamadas desde la consola linux
 
