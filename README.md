@@ -11,6 +11,8 @@ Con esto tienes solo tienes que realizar las siguientes llamadas desde la consol
 
 $ iniciar
 
+Si eres de los locos como yo un verdadero topo, puedes seguirme en mi facebook https://www.facebook.com/juanmanuel.villalba.526
+
 Para trabajar en entornos de producción eh fabricado una herramienta llamada "production.sh" esta sirve para de manera rapida reconocer el ip del servidor.
 
 $ sh production.sh
