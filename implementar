@@ -48,7 +48,7 @@ check_step
 }
 
 if [ $1 ="ahora" ]; then
-     echo 'ahora ejecuta la instalación con "desplegar ahora"';
+     echo 'ahora ejecuta la instalación con "./implementar ahora"';
 else
     instalar ;
 fi
