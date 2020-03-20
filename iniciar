@@ -379,11 +379,10 @@ else
     echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
     echo "Listo todo esta instalado y listo para desplegar"
     echo "Todo listo ahora desplegamos el server GO, GO, GO"
-    sh "$servidor"
 fi
 }
 instalar
 
 dos2unix "$servidor"
 ejecutar
-./bin/service.sh
+$(sh "$servidor")
