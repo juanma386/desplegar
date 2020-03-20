@@ -83,12 +83,14 @@ echo '
 ## Part Deploy working
 ##
 ## @author      Villalba Juan Manuel Pedro <https://github.com/juanma386>
-# @Version:     0.0.1
+# @Version:     0.0.5
 # @Estado:      Alpha
 # @Destino:     Deploy Server Php Linux
 # @Date:        05:41pm 14-09-2017
+# @UpDate:      03:40am 20-03-2020
 # @Advertencia  Usar con cautela y bajo propia responsabilidad
 # @Licence:     GPLv2 Free Software Foundation <licensing@fsf.org>
+# @Comment:	Un desastre, pero anda bien arreglados algunos errores.
 ' > testing.server.log
 
     echo "Finish file logger is created and continue process"
@@ -316,7 +318,6 @@ server
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
 $(sudo -v && sudo apt -y update && sudo apt -y install dos2unix)
-$(curl -o iniciar https://pastebin.com/raw/8aLb2Ui6)
 $(dos2unix iniciar)
 $(chmod +x iniciar)
 $(sudo cp iniciar /usr/bin/iniciar)
