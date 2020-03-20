@@ -1,5 +1,14 @@
 #!/bin/sh
 # File: Iniciar
+
+servidor="$bin/servicio.sh"
+bin="$_pwd/./bin/"
+_hoy=$(date +"%m_%d_%Y_%r_%S")
+_pwd=$(pwd)
+_permisos=$(ls -la *)
+iniciar="/usr/bin/iniciar"
+
+
 errorEjecutando="Error iniciando servicio"
 errorDown(){
 echo "Error descargando"
@@ -10,10 +19,7 @@ echo "Aplicativos instalados ahora iniciar nuevamente"
 forbiden(){
 echo "ERROR chmod files is forbiden"
 }
-_hoy=$(date +"%m_%d_%Y_%r_%S")
-_pwd=$(pwd)
-_permisos=$(ls -la *)
-iniciar="/usr/bin/iniciar"
+
 
 # Integramos datos en esta version 2.09 21042019 yuma2020 Juan Manuel Pedro Villalba
 crear_config(){ 
@@ -22,7 +28,7 @@ servidor=127.0.0.1
 puerto=8000
 usuario=NOCORRESPONDE
 password=NOCORRESPONDE
-" > config.ini
+" > $_pwd/./config.ini
 }
 
 echo "
@@ -42,7 +48,7 @@ echo "
 # Instalar programa
 # Verificando servicios de trabajo para el despliegue
 ejecutar(){
-sh $_pwd/./bin/servicio.sh
+sh $servidor
 }
 iniciar_carga() {
 curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
@@ -91,7 +97,7 @@ EOF
 
 
 bin(){
-	if [ -d $_pwd/./bin ];
+	if [ -d $bin ];
 	then
 	echo "Sí, sí existe."
 	echo "Data is exist in bin folder".	" [ ".$_hoy." ]"
@@ -153,12 +159,12 @@ EOF
 SEPARADOR
 
 server() {
-servidor=$_pwd/./bin/servicio.sh
+
 if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o $_pwd/./bin/servicio.sh https://pastebin.com/raw/RA8w25Vu
+    curl -o $servidor https://pastebin.com/raw/RA8w25Vu
    
     echo "Downloading finish OK"
     echo "Verificando Permisos"
@@ -187,7 +193,7 @@ fi
 }
 SEPARADOR
 chmodbin(){
-chmod +x $_pwd/./*/servicio.sh 
+chmod +x $servidor 
 }
 SEPARADOR
 server
@@ -240,7 +246,7 @@ SEPARADOR
 # Verificando la existencia del archivo bin/servicio.sh
 
 verificar_servicio(){			
-servidor=$_pwd/./bin/servicio.sh
+servidor=$servidor
 if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
@@ -375,5 +381,5 @@ fi
 }
 instalar
 
-dos2unix $_pwd/./bin/servicio.sh
+dos2unix $servidor
 ejecutar
