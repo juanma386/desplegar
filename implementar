@@ -1,4 +1,11 @@
 #!/bin/sh
+if ! [ $(id -u) = 0 ]; then
+   echo "I am not root!"
+   exit 1
+fi
+
+
+
 # Datos de instalación en sistemas basados en Ubuntu/Debian
 # File: implementar
 _hoy=$(date +"%m_%d_%Y_%r_%S")
@@ -15,8 +22,9 @@ sudo -v
 curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix $descargado
 chmod +x $descargado
-sudo cp $descargado $iniciar
+sudo mv $descargado $iniciar
 }
+
 
 check_step() {
 if [ ! -e "$FILE" ];
@@ -26,7 +34,7 @@ then
     echo "El archivo ".$startcheck." no existe".    " [ ".$_hoy." ]" >> $logger
         iniciar carga
     echo "configdata deploy work created".             "[".$_hoy."]"
-	echo "No se instalo correctamente"
+	echo "Para desplegar ejecuta el comando iniciar"
 
 else
     echo "Data is exist in ".$startcheck." folder". " [ ".$_hoy." ]"
@@ -44,7 +52,7 @@ rm ./iniciar
 
 preparar(){
 
-echo "Bienvenido, ahora podemos mostrarte el mundo"
+echo "Bienvenido a este nuevo mundo"
 sudo -v
 sudo apt-get update -y && sudo apt-get install php7.2 php5.6 curl dos2unix -y
 echo "Si todo el proceso esta correcto tienes posibilidad de dar uso a este sistema operativo si es deribado de Ubuntu/debian"
@@ -53,29 +61,29 @@ curl http://google.com|echo "Puedes continuar||echo "al parecer no tienes intern
 dos2unix ./implementar|echo "Bueno podemos continuar"||echo "La aplicación **dos2unix** no funciona && exit;
 }
 
-descargamos(){
-curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
+descargando(){
+    curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 }
+
 instalar(){
-descargamos;
+curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix $descargado
 chmod +x $descargado
 mv $descargado $iniciar
+mv ./iniciar /usr/bin/
 check_step
 }
 
 
 if [ "$1" = "preparar" ];
 then
-      preparar;
-else
-    # 
+     preparar ;
+else 
     echo "Status Install OK"
 fi
 
-if [ "$1" = "instalalo" ];
-then
-     
+if [ "$1" = "ahora" ];
+then 
      instalar ;
 else
     # 
@@ -110,9 +118,7 @@ else
     Ayuda : help
     Desinstalar : borralo
     Actualizar : actualizalo
-    Instalar : ahora
-    
-    Una ves terminado podes ejecutar iniciar sin ser root
-    "
+    Instalar : ahora"
 fi
+
 
