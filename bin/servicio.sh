@@ -13,14 +13,24 @@ echo '
 # @Licence:     GPLv2 Free Software Foundation <licensing@fsf.org>
 ';
 
-logger="$_pwd/./testing.server.log"
-public_html="$_pwd/./public_html"
-servidor="$bin/servicio.sh"
-bin="$_pwd/./bin/."
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
 iniciar="/usr/bin/iniciar"
+
+S1="8000"
+fileconfig="$_pwd/config.ini"
+SERVER=$(awk -F "=" '/servidor/ {print $2}' "$fileconfig")
+PORT=$(awk -F "=" '/puerto/ {print $2}' "$fileconfig")
+USER=$(awk -F "=" '/usuario/ {print $2}' "$fileconfig")
+PASS=$(awk -F "=" '/password/ {print $2}' "$fileconfig")
+
+logger="$_pwd/./testing.server.log"
+public_html="$_pwd/./public_html"
+servidor="$bin/servicio.sh"
+bin="$_pwd/./bin/."
+
+
 
 FILE="/usr/bin/iniciar"
 fileroute="$_pwd/./bin/route.php"
@@ -53,26 +63,13 @@ cat <<EOF
 EOF
 }
 # Integramos datos en esta version 2.09 21042019 yuma2020 Juan Manuel Pedro Villalba
-crear_config(){ 
-$(echo ' 
-servidor=127.0.0.1
-puerto=8000
-usuario=NOCORRESPONDE
-password=NOCORRESPONDE
-' > ./config.ini)
-echo "nuevamente intentaremos ver si se ha creado el archivo"
-check_config 
-}
+
+# Agregado en la version 2.10 24042019
+
+ 
 # Ahora con esto se crea un archivo para trabajar con los datos del servidor con un file llamado config.ini
-SEPARADOR
+
 puertos_dinamicos_iniciar(){
-
-CFG_FILE=./config.ini
-
-SERVER=$(awk -F "=" '/servidor/ {print $2}' "$CFG_FILE")
-PORT=$(awk -F "=" '/puerto/ {print $2}' "$CFG_FILE")
-USER=$(awk -F "=" '/usuario/ {print $2}' "$CFG_FILE")
-PASS=$(awk -F "=" '/password/ {print $2}' "$CFG_FILE")
 
 echo "Che! este es tu Servidor: "$SERVER""
 echo "Aquí esta tu Puerto: "$PORT""
@@ -81,8 +78,17 @@ echo "Aquí esta tu Usuario: "$USER""
 echo "Aquí esta tu Password: "$PASS""
 
 }
-SEPARADOR
+
 puertos_dinamicos_iniciar
+
+# Add layer security errors
+
+if [ "$PORT" -lt "$S1" ]; then
+	echo $PORT" es MENOR que "$S1
+    echo "$fileconfig"
+    break;
+    exit;
+fi
 
 file=./testing.server.log
 if [ ! -e "$file" ]; then
@@ -98,3 +104,4 @@ ADDR_PORT=${1:-$SERVER:$PORT}
 DOC_ROOT="$_pwd"
 
 php -S "$ADDR_PORT" -t "$DOC_ROOT/" -f bin/route.php 
+
