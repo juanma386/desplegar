@@ -363,15 +363,18 @@ fi
 
 
 
+server && echo "funcion server exec"
+resolver_puerto_ochomil && echo "funcion puerto exec"
 route && echo "funcion route exec"
 registro && echo "funcion registro exec"
 bin && echo "funcion bin exec"
-server && echo "funcion server exec"
-resolver_puerto_ochomil && echo "funcion puerto exec"
+
+
 check_config && echo "funcion configuraciones exec"
 check_step && echo "funcion checkstep exec"
-server && echo "funcion server exec"
+
 instalar && echo "funcion instalar exec"
+
 dos2unix "$servidor" && echo "Dos to unix file $servidor exec"
 ejecutar && echo "funcion ejecutar try exec"
 $($servidor) && echo "funcion ejecutar other try exec"
