@@ -1,9 +1,9 @@
 #!/bin/sh
 # File: Iniciar
 errorEjecutando="Error iniciando servicio"
-errorDown(){echo "Error descargando" && exit;}
-aplicaTivo(){echo "Aplicativos instalados ahora iniciar nuevamente" && exit;}
-forbiden(){echo "ERROR chmod files is forbiden" && exit;}
+errorDown(){echo "Error descargando" \n exit;}
+aplicaTivo(){echo "Aplicativos instalados ahora iniciar nuevamente" \n exit;}
+forbiden(){echo "ERROR chmod files is forbiden" \n exit;}
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
