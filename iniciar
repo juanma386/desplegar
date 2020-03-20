@@ -1,17 +1,18 @@
 #!/bin/sh
 # File: Iniciar
 
-$(logger="$_pwd/./testing.server.log")
-$(public_html="$_pwd/./public_html")
-$(servidor="$bin/servicio.sh")
-$(bin="$_pwd/./bin/")
+logger="$_pwd/./testing.server.log"
+public_html="$_pwd/./public_html"
+servidor="$bin/servicio.sh"
+bin="$_pwd/./bin/"
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
-$(iniciar="/usr/bin/iniciar")
+iniciar="/usr/bin/iniciar"
 $(fileconfig="$_pwd/./config.ini")
 $(FILE="/usr/bin/iniciar")
 $(fileroute="$_pwd/./bin/route.php")
+startcheck=$iniciar
 
 errorEjecutando="Error iniciando servicio"
 errorDown(){
@@ -250,8 +251,7 @@ SEPARADOR
 # Verificando la existencia del archivo bin/servicio.sh
 
 verificar_servicio(){			
-servidor="$servidor"
-if [ ! -e ""$servidor"" ];
+if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
@@ -273,7 +273,7 @@ verificar_servicio
 #sh bin/servicio.sh
 # Permisos del servicio.sh
 permisosverificarserver(){
-if [ ! -x "$_pwd/./*/servicio.sh" ];
+if [ ! -x "$servidor" ];
 then
 echo "Delegando permisos"
 echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> $logger 
@@ -336,13 +336,12 @@ server
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
 $(sudo -v)
-$(dos2unix $_pwd/./iniciar)
-$(chmod +x $_pwd/./iniciar)
-$(sudo cp iniciar /usr/bin/iniciar)
+$(dos2unix $iniciar)
+$(chmod +x $iniciar)
+$(sudo cp iniciar $iniciar)
 }
 
 check_step() {
-startcheck=/usr/bin/iniciar
 if [ ! -e "$startcheck" ];
 then
     echo "File does not exist"
