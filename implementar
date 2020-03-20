@@ -1,0 +1,7 @@
+rm ./iniciar
+curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
+dos2unix ./iniciar
+chmod +x ./iniciar
+./iniciar
+bash iniciar
+bash ./iniciar
