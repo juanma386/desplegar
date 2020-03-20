@@ -53,11 +53,14 @@ curl http://google.com|echo "Puedes continuar||echo "al parecer no tienes intern
 dos2unix ./implementar|echo "Bueno podemos continuar"||echo "La aplicación **dos2unix** no funciona && exit;
 }
 
+descargamos(){
+curl -o $descargado https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
+}
 instalar(){
-curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
-dos2unix $iniciar
-chmod +x $iniciar
-bash $iniciar
+descargamos;
+dos2unix $descargado
+chmod +x $descargado
+mv $descargado $iniciar
 check_step
 }
 
