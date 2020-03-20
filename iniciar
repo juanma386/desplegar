@@ -1,13 +1,5 @@
 #!/bin/sh
 # File: Iniciar
-
-# Datos de instalación en sistemas basados en Ubuntu/Debian
-
-echo "¿Eres Administrador?"
-$(sudo -v && echo "OK" || echo "NOK" sudo apt update -y && sudo apt install php7.2 php5.6 curl dos2unix -y )
-
-
-
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
