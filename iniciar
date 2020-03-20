@@ -1,9 +1,9 @@
 #!/bin/sh
 # File: Iniciar
 errorEjecutando="Error iniciando servicio"
-errorDown(){echo "Error descargando" \n exit;}
-aplicaTivo(){echo "Aplicativos instalados ahora iniciar nuevamente" \n exit;}
-forbiden(){echo "ERROR chmod files is forbiden" \n exit;}
+errorDown(){echo "Error descargando";}
+aplicaTivo(){echo "Aplicativos instalados ahora iniciar nuevamente";}
+forbiden(){echo "ERROR chmod files is forbiden";}
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
@@ -150,7 +150,7 @@ if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu||echo "ERROR Download Not Download or conect Pastebin" && exit;
+    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu||echo "ERROR Download Not Download or conect Pastebin";
    
     echo "Downloading finish OK"
     echo "Verificando Permisos"
@@ -317,7 +317,7 @@ server
 
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
-$(sudo -v||echo "necesitas acceder como administrador y ejecuta nuevamente" && exit;)
+$(sudo -v||echo "necesitas acceder como administrador y ejecuta nuevamente")
 $(dos2unix iniciar)
 $(chmod +x iniciar)
 $(sudo cp iniciar /usr/bin/iniciar)
