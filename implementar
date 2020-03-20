@@ -12,10 +12,10 @@ startcheck=$iniciar
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
 $(sudo -v)
-$(curl -o $iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar)
-$(dos2unix $iniciar)
-$(chmod +x $iniciar)
-$(sudo cp iniciar $iniciar)
+$(curl -o ./iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar)
+$(dos2unix ./iniciar)
+$(chmod +x ./iniciar)
+$(sudo cp ./iniciar $iniciar)
 }
 
 check_step() {
