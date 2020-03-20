@@ -4,7 +4,7 @@
 logger="$_pwd/./testing.server.log"
 public_html="$_pwd/./public_html"
 servidor="$bin/servicio.sh"
-bin="$_pwd/./bin/"
+bin="$_pwd/./bin/."
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
