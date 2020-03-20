@@ -36,8 +36,6 @@ Si quieren cambiar el puerto simplemente borran el archivo **config.ini** así d
 IMPORTANTE!: ¡¡CUIDADO CON EJECUTAR ESTA OPCIÓN **PRODUCTION.SH** EN MODO LOCAL POR QUE HARA QUE NO TRABAJE Y TENGAN QUE EJECUTAR ESTOS COMANDOS!! Si por algun motivo estas trabajando en local y no quieres tener problemas con errores como los que por X motivo no quiera iniciarte el sistema, es simple: **SI USTED NO TIENEN PUERTO ABIERTO PARA TRABAJAR EN PRODUCCIÓN NO PODRA INICIAR EL SISTEMA**
 Para resolver este problema debes realizar esto:
 
-$ rm -v config.ini
-
 Y luego ejecutar iniciar dos veces una para instalar el arreglo y otra para ejecutarlo.
 
 
@@ -46,4 +44,4 @@ Modalidad de uso de instalar
 Instalar es una herramienta creada para realizar descargas de repositorios a rapida velocidad, donde se prioriza la productividad
 Modo de instalación en linux
 
-$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && chmod +x implementar && ./implementar help
+$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && chmod +x implementar && sudo ./implementar preparalo && sudo ./implementar instalalo
