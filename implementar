@@ -64,7 +64,7 @@ check_step
 
 if [ "$1" = "preparar" ];
 then
-     preparar && echo "OK" || echo "NO sos Administrador Chau!" && exit;  ;
+     preparar
 else
     # 
     echo "Status Install OK"
