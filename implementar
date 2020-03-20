@@ -44,7 +44,7 @@ rm ./iniciar
 
 preparar(){
 
-echo "¿Eres Administrador?"
+echo "Bienvenido, ahora podemos mostrarte el mundo"
 sudo -v
 sudo apt-get update -y && sudo apt-get install php7.2 php5.6 curl dos2unix -y
 echo "Si todo el proceso esta correcto tienes posibilidad de dar uso a este sistema operativo si es deribado de Ubuntu/debian"
@@ -108,6 +108,9 @@ else
     Ayuda : help
     Desinstalar : borralo
     Actualizar : actualizalo
-    Instalar : ahora"
+    Instalar : ahora
+    
+    Una ves terminado podes ejecutar iniciar sin ser root
+    "
 fi
 
