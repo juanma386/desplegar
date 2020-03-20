@@ -68,4 +68,15 @@ else
     echo "Listo ahora solo tienes que ejecutar el comando "iniciar" para operar normalmente"
 fi
 
+if [ $1 ="borralo" ]; then
+     echo 'ahora ejecuta la instalación con "./implementar ahora"';
+else
+    remover ;
+    echo "Listo y muchas gracias por usar este programa"
+fi
 
+if [ $1 ="borralo" ]; then
+     echo 'ahora ejecuta la instalación con "./implementar ahora"';
+else
+    echo "Las opciones son las siguientes:\n [ ./implementar ahora ] Esta diseñado para realizar la instalación\n\n[ ./implementar help ] es este mensaje de ayuda\n\n[ ./implementar borralo ] es para remover del sistema\n\n [ ./implementar actualizalo ] es para actualizar el programa a las versiones recientes"
+fi
