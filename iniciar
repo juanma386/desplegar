@@ -52,7 +52,7 @@ echo "
 # Instalar programa
 # Verificando servicios de trabajo para el despliegue
 ejecutar(){
-sh $servidor
+sh "$servidor"
 }
 iniciar_carga() {
 curl -o $FILE https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
@@ -164,11 +164,11 @@ SEPARADOR
 
 server() {
 
-if [ ! -e "$servidor" ];
+if [ ! -e ""$servidor"" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o $servidor https://pastebin.com/raw/RA8w25Vu
+    curl -o "$servidor" https://pastebin.com/raw/RA8w25Vu
    
     echo "Downloading finish OK"
     echo "Verificando Permisos"
@@ -185,7 +185,7 @@ fi
 SEPARADOR
 # Permisos del servicio.sh
 permisosverificarserver(){
-if [ ! -x "$servidor" ];
+if [ ! -x ""$servidor"" ];
 then
 echo "Delegando permisos"
 echo "Error en permisos del sistema......FAIL".	" [ ".$_hoy." ]" >> $logger 
@@ -197,7 +197,7 @@ fi
 }
 SEPARADOR
 chmodbin(){
-chmod +x $servidor 
+chmod +x "$servidor" 
 }
 SEPARADOR
 server
@@ -250,8 +250,8 @@ SEPARADOR
 # Verificando la existencia del archivo bin/servicio.sh
 
 verificar_servicio(){			
-servidor=$servidor
-if [ ! -e "$servidor" ];
+servidor="$servidor"
+if [ ! -e ""$servidor"" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
@@ -260,7 +260,7 @@ then
     echo "Downloading finish OK"
     echo "Verificando Permisos"
     echo "Downloadings data sh to working deploy ".	" [ ".$_hoy." ]" >> $logger 
-    dos2unix $servidor
+    dos2unix "$servidor"
     permisosverificarserver
 else
     echo "Data Deploy is existed".	" [ ".$_hoy." ]"
@@ -284,7 +284,7 @@ echo "Permisos de ejecución................OK".	" [ ".$_hoy." ]" >> $logger
 fi
 }
 chmodbin(){
-chmod +x $servicio 
+chmod +x "$servidor" 
 }
 # Verificando estado de config.ini
 
@@ -380,11 +380,11 @@ else
     echo "Data ".$FILE." deploy is existed  OK ". " [ "$_hoy" ]" >> $logger
     echo "Listo todo esta instalado y listo para desplegar"
     echo "Todo listo ahora desplegamos el server GO, GO, GO"
-    sh $servicio
+    sh "$servidor"
 fi
 }
 instalar
 
-dos2unix $servidor
+dos2unix "$servidor"
 ejecutar
 
