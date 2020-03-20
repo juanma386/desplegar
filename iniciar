@@ -391,5 +391,5 @@ ejecutar
 }
 
 core
-rm ./config.ini
+rm -f ./config.ini
 core
