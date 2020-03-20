@@ -19,7 +19,7 @@ sudo mv $descargado $iniciar
 }
 
 check_step() {
-if [ ! -e "$startcheck" ];
+if [ ! -e "$FILE" ];
 then
     echo "File does not exist"
         echo "Al parecer no existe este archivo"
