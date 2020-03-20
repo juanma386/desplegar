@@ -10,8 +10,8 @@ _pwd=$(pwd)
 _permisos=$(ls -la *)
 iniciar="/usr/bin/iniciar"
 fileconfig="$_pwd/./config.ini"
-$(FILE="/usr/bin/iniciar")
-$(fileroute="$_pwd/./bin/route.php")
+FILE="/usr/bin/iniciar"
+fileroute="$_pwd/./bin/route.php"
 startcheck=$iniciar
 
 errorEjecutando="Error iniciando servicio"
