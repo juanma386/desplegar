@@ -4,19 +4,8 @@
 # Datos de instalación en sistemas basados en Ubuntu/Debian
 
 echo "¿Eres Administrador?"
-RESULT=$(sudo -v)
-if [ $RESULT -eq 0 ]; then
-  echo "success"
-  instalarPhp=$(sudo apt update -y && sudo apt install php7.2 php5.6 curl dos2unix -y )
-else
-  echo "failed"
-fi
+$(sudo -v && echo "OK" || echo "NOK" sudo apt update -y && sudo apt install php7.2 php5.6 curl dos2unix -y )
 
-if [ $RESULT == 0 ]; then
-  echo "success 2"
-else
-  echo "failed 2"
-fi
 
 
 _hoy=$(date +"%m_%d_%Y_%r_%S")
