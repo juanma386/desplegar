@@ -386,5 +386,4 @@ instalar
 
 dos2unix "$servidor"
 ejecutar
-./bin/service.sh|xargs sh
-
+./bin/service.sh
