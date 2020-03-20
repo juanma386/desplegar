@@ -3,8 +3,9 @@
 
 logger="$_pwd/./testing.server.log"
 public_html="$_pwd/./public_html"
+
+bin="$_pwd/./bin"
 servidor="$bin/servicio.sh"
-bin="$_pwd/./bin/."
 _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
@@ -234,7 +235,7 @@ if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    
+    curl -o "$servidor" https://raw.githubusercontent.com/juanma386/desplegar/master/bin/servicio.sh
 		server_shell
     echo "Downloading finish OK"
     echo "Verificando Permisos"
