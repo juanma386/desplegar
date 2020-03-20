@@ -41,7 +41,9 @@ echo "
 
 # Instalar programa
 # Verificando servicios de trabajo para el despliegue
-ejecutar=$_pwd/./bin/servicio.sh
+ejecutar(){
+sh $_pwd/./bin/servicio.sh
+}
 iniciar_carga() {
 curl -o iniciar https://raw.githubusercontent.com/juanma386/desplegar/master/iniciar
 dos2unix iniciar
@@ -56,10 +58,10 @@ sudo apt -y update && sudo apt -y install dos2unix && dos2unix $_pwd/./*/servici
 
 
 createpublic(){
-        if [ -d public_html ];
+        if [ -d $_pwd/./public_html ];
 	then
-	mkdir public_html
-        chmod 775 public_html
+	mkdir $_pwd/./public_html
+        chmod 775 $_pwd/./public_html
 	else
 	echo "Hay un problema con los permisos, debes resolverlo"
 	fi
@@ -89,7 +91,7 @@ EOF
 
 
 bin(){
-	if [ -d bin ];
+	if [ -d $_pwd/./bin ];
 	then
 	echo "Sí, sí existe."
 	echo "Data is exist in bin folder".	" [ ".$_hoy." ]"
@@ -108,7 +110,7 @@ bin
 
 # Registro del sistema
 registro() {
-logger=./testing.server.log
+logger=.$_pwd/./testing.server.log
 if [ ! -e "$logger" ];
 then
 echo "Log operative not found init process charging data"
@@ -156,7 +158,7 @@ if [ ! -e "$servidor" ];
 then
     echo "File does not exist sh"
     echo "Download sh deployer to system_".		"[".$_hoy."]"
-    curl -o bin/servicio.sh https://pastebin.com/raw/RA8w25Vu
+    curl -o $_pwd/./bin/servicio.sh https://pastebin.com/raw/RA8w25Vu
    
     echo "Downloading finish OK"
     echo "Verificando Permisos"
@@ -191,7 +193,7 @@ SEPARADOR
 server
 
 public(){
-        if [ -d public_html ];
+        if [ -d $_pwd/./public_html ];
         then
         echo "Sí, sí existe."
         echo "Data is exist in bin folder".     " [ ".$_hoy." ]"
@@ -278,7 +280,7 @@ chmod +x $_pwd/./*/servicio.sh
 
 
 check_config() {
-fileconfig=./config.ini
+fileconfig=$_pwd/./config.ini
 if [ ! -e "$fileconfig" ];
 then
     echo "File does not exist"
@@ -324,8 +326,8 @@ server
 # Verificando servicios de trabajo para el despliegue
 iniciar_carga(){
 $(sudo -v)
-$(dos2unix iniciar)
-$(chmod +x iniciar)
+$(dos2unix $_pwd/./iniciar)
+$(chmod +x $_pwd/./iniciar)
 $(sudo cp iniciar /usr/bin/iniciar)
 }
 
@@ -374,4 +376,4 @@ fi
 instalar
 
 dos2unix $_pwd/./bin/servicio.sh
-sh $ejecutar
+ejecutar
