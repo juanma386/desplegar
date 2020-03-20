@@ -61,10 +61,9 @@ bash $iniciar
 check_step
 }
 
-preparar
+
 if [ "$1" = "preparar" ];
 then
-     
      preparar && echo "OK" || echo "NO sos Administrador Chau!" && exit;  ;
 else
     # 
