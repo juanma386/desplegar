@@ -21,7 +21,7 @@ _hoy=$(date +"%m_%d_%Y_%r_%S")
 _pwd=$(pwd)
 _permisos=$(ls -la *)
 iniciar="/usr/bin/iniciar"
-$(fileconfig="$_pwd/./config.ini")
+
 FILE="/usr/bin/iniciar"
 fileroute="$_pwd/./bin/route.php"
 startcheck=$iniciar
@@ -67,7 +67,7 @@ check_config
 SEPARADOR
 puertos_dinamicos_iniciar(){
 
-CFG_FILE=$fileconfig
+CFG_FILE=./config.ini
 
 SERVER=$(awk -F "=" '/servidor/ {print $2}' "$CFG_FILE")
 PORT=$(awk -F "=" '/puerto/ {print $2}' "$CFG_FILE")
