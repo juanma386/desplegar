@@ -1,4 +1,11 @@
 # desplegar
+
+# Requisitos son los siguientes:
+
+* Sistema Linux Debian/Ubuntu
+* Sistema Microsoft Linux Debian/Ubuntu
+* Comando sudo habilitado
+
 Despliegue automatico del sistema con servidores php de manera rapida
 ¿Como aplicar?
 Primero debes instalar debian en una un terminal VPS, PC casera con win10 o linux
