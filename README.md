@@ -12,7 +12,7 @@ You must first install debian on a VPS terminal, home PC with win10 or linux
 Then you have to write the following
 
 From the Debian linux console on your **Windows 10 PC in my case**
-$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && sudo chmod +x implement && sudo ./implement prepare && sudo ./implement now && start
+$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implement && sudo chmod +x implement && sudo ./implement prepare && sudo ./implement now && start
 
 With this you just have to make the following calls from the linux console
 
