@@ -1,56 +1,54 @@
-# desplegar
+• Deploy
 
-# Requisitos son los siguientes:
+• Requirements are as follows:
 
-* Sistema Linux Debian/Ubuntu
-* Sistema Microsoft Linux Debian/Ubuntu
-* Comando sudo habilitado
+* Debian/Ubuntu Linux System
+* Microsoft Linux Debian/Ubuntu System
+* Sudo command enabled
 
-Despliegue automatico del sistema con servidores php de manera rapida
-¿Como aplicar?
-Primero debes instalar debian en una un terminal VPS, PC casera con win10 o linux
-Luego debes escribir lo siguiente
+Automatic system deployment with php servers quickly
+How to apply?
+You must first install debian on a VPS terminal, home PC with win10 or linux
+Then you have to write the following
 
-Desde la consola linux de Debian en tu **PC windows 10 en mi caso**
-$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && sudo chmod +x implementar && sudo ./implementar preparar && sudo ./implementar ahora && iniciar
+From the Debian linux console on your **Windows 10 PC in my case**
+$ wget https://raw.githubusercontent.com/juanma386/desplegar/master/implementar && sudo chmod +x implement && sudo ./implement prepare && sudo ./implement now && start
 
-Con esto tienes solo tienes que realizar las siguientes llamadas desde la consola linux
+With this you just have to make the following calls from the linux console
 
-$ iniciar
+$ start
 
-Si eres de los locos como yo un verdadero topo, puedes seguirme en mi facebook https://www.facebook.com/juanmanuel.villalba.526
+If you're crazy like me a real mole, you can follow me on my facebook https://www.facebook.com/juanmanuel.villalba.526
 
-Para trabajar en entornos de producción eh fabricado una herramienta llamada "production.sh" esta sirve para de manera rapida reconocer el ip del servidor.
+To work in production environments eh manufactured a tool called "production.sh" this serves to quickly recognize the ip of the server.
 
-$ sh production.sh
+$sh production.sh
 
-Para instalar es simple de esta manera:
+To install is simple like this:
 
 $ sudo cp production.sh /usr/bin/prodok
 
-Luego de esto puedes ingresar en la carpeta cualquier
+After this you can enter any folder
 cd /path/to/change
 
-y escribir 
+and write 
 
-$ prodok && iniciar
+$ prodok && start
 
-Y listo tendras la dirección de tu ip de produccion trabajando lista para testear cualquier cosa.
+And you'll have the address of your production ip working ready to test anything.
 
-con esto ya podran realizar el despliegue desde **production**
+with this you can already deploy from **production**
 
-Y listo puedes realizar cualquier despliegue que quieras, disfrutenlo todo lo que puedan, disculpen el codigo desastroso, pero así como lo ven funciona, se que se puede mejorar pero bueno allí quedo a la espera de sus pull request, desde ya muchas gracias acepto donaciones a puedes contactarme por whatsapp al **+549-376-498-2265** saludos, o pueden buscarme en **hexomedesarrollos.com**
+And ready you can make any deployment you want, enjoy it as much as you can, excuse the desastrous code, but as you see it works, I know that you can improve but well there I am waiting for your pull requests, from now on thank you I accept donations to you can contact me by whatsapp at **+549-376-498-2265** greetings, or you can look for me in **hexomedesarrollos.com**
 
-Si quieren cambiar el puerto simplemente borran el archivo **config.ini** así de simple o pueden cambiar parametros a su gusto en manual.
-IMPORTANTE!: ¡¡CUIDADO CON EJECUTAR ESTA OPCIÓN **PRODUCTION.SH** EN MODO LOCAL POR QUE HARA QUE NO TRABAJE Y TENGAN QUE EJECUTAR ESTOS COMANDOS!! Si por algun motivo estas trabajando en local y no quieres tener problemas con errores como los que por X motivo no quiera iniciarte el sistema, es simple: **SI USTED NO TIENEN PUERTO ABIERTO PARA TRABAJAR EN PRODUCCIÓN NO PODRA INICIAR EL SISTEMA**
-Para resolver este problema debes realizar esto:
+If you want to change the port simply delete the file **config.ini** as simple as this or you can change parameters to your liking in manual.
+IMPORTANT!: BE CAREFUL TO RUN THIS OPTION **PRODUCTION. SH** IN LOCAL MODE BECAUSE IT WILL MAKE YOU NOT WORK AND HAVE TO EXECUTE THESE COMMANDS!! If for some reason you are working locally and do not want to have problems with errors like the ones that for X reason do not want to start the system, it is simple: **IF YOU DO NOT HAVE OPEN PORT TO WORK IN PRODUCTION YOU WILL NOT BE ABLE TO START THE SYSTEM**
+To resolve this issue you must do this:
 
-Y luego ejecutar iniciar dos veces una para instalar el arreglo y otra para ejecutarlo.
-
-
-Modalidad de uso de instalar
-
-Instalar es una herramienta creada para realizar descargas de repositorios a rapida velocidad, donde se prioriza la productividad
-Modo de instalación en linux
+And then run start twice once to install the fix and another to run it.
 
 
+How to use install
+
+Install is a tool created to perform repository downloads at a rapid speed, where productivity is prioritized
+Installation mode in linux
